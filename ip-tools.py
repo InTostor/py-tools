@@ -1,14 +1,19 @@
-import struct #INOP
-import math #for future
+import struct 
+import math 
 import re
-
-
-
-
-
-#Converts hexadecimal ipv6 to address, that look like ipv4 
-# Example: 2a00:11d8:1201::962b:18:e716:fbff is 10752.4568.4609.0.38443.24.59158.64511
-
+print("HHHHHHHHHHHHHHHHHHHH  HHHHHHHHHHHHHHHHHH                                                   HHHHHHHHHHHHHHHHHHHH   HHHHHHHHHHHHHHHHHH")
+print("    HHHHHHHHH         HHH            HHH                                                        HHHHHHHHH         HHH            HHH")
+print("    HHHHHHHHH         HHH            HHH                                HH                      HHHHHHHHH         HHH            HHH")
+print("    HHHHHHHHH         HHH            HHH                                HH                      HHHHHHHHH         HHH            HHH")
+print("    HHHHHHHHH         HHH            HHH                             HHHHHHHH                   HHHHHHHHH         HHH            HHH")
+print("    HHHHHHHHH         HHH            HHH                                HH                      HHHHHHHHH         HHH            HHH")
+print("    HHHHHHHHH         HHHHHHHHHHHHHHHHHHv            v H       H        HH                      HHHHHHHHH         HHHHHHHHHHHHHHHHHHv            v HHHHHHHH")
+print("    HHHHHHHHH         HHH                v          v  H       H        HH     HHHHHHHHHHHH     HHHHHHHHH         HHH                v          v  H")
+print("    HHHHHHHHH         HHH                 v        v   H       H        HH     H          H     HHHHHHHHH         HHH                 v        v   H")
+print("    HHHHHHHHH         HHH                  v      v    HHHHHHHHH        HH     H          H     HHHHHHHHH         HHH                  v      v    HHHHHHHH")
+print("    HHHHHHHHH         HHH                   v    v             H        HH     H          H     HHHHHHHHH         HHH                   v    v     H      H")
+print("    HHHHHHHHH         HHH                    v  v              H        HH     H          H     HHHHHHHHH         HHH                    v  v      H      H")
+print("HHHHHHHHHHHHHHHHHHHH  HHH                     vv               H        HH     HHHHHHHHHHHH HHHHHHHHHHHHHHHHHHHH  HHH                     vv       HHHHHHHH")
 def ipv6to4like(ipv6): 
     ipv6_arr = ipv6.split(":")
     ipv6to4 = []
@@ -27,10 +32,6 @@ def ipv6to4like(ipv6):
     
     return str('.'.join(map(str, ipv6to4)))
 
-
-#Converts decimal ipv6 (from function above) to standart ipv6 
-# Example: 10752.4568.4609.0.38443.24.59158.64511 is 2a00:11d8:1201::962b:18:e716:fbff
-
 def ipv4liketo6(ipv6_4):
     ipv6_arr = ipv6_4.split(".")
     ipv6to4 = []
@@ -43,8 +44,6 @@ def ipv4liketo6(ipv6_4):
 
     return str(':'.join(map(str, ipv6to4)))
 
-
-#Finds delta (addresses range) between two ipv4 addresses
 def ip_delta4(ip1,ip2):
     ipv4_arr1, ipv4_arr2 = ip1.split("."), ip2.split(".")
     for i in range(0,len(ipv4_arr1)):        
@@ -59,7 +58,6 @@ def ip_delta4(ip1,ip2):
 
     return delta
 
-#Finds delta (addresses range) between two ipv6 addresses
 def ip_delta6(ip1,ip2):
     ip1, ip2 = ipv6to4like(ip1), ipv6to4like(ip2)
     ipv4_arr1, ipv4_arr2 = ip1.split("."), ip2.split(".")
@@ -74,18 +72,15 @@ def ip_delta6(ip1,ip2):
     delta = abs(ipv41-ipv42)
 
     return delta
-
-# returns version of address
 def ipv(ip):
     f = ip.find(".")
     s = ip.find(":")
     if not(f or s): return -1
     if f: return 4
     if s: return 6
-
-
+ip = input()
 print(ipv6to4like("2a00:11d8:1201:0:962b:18:e716:fbff"))
-print(ipv4liketo6("65286.00..0000.0000.0000.195"))
+print(ipv4liketo6(ip))#Вставить ipv4 сюда 
 print(ip_delta4("192.168.0.1","192.168.0.24"))
 print(ip_delta6("2a00:11d8:1201:0000:962b:18:e716:fb00","2a00:11d8:1201::962b:18:e716:fbff"))
 
